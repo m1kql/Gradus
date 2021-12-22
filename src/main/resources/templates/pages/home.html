@@ -1,4 +1,33 @@
-<h1>Logged in welcome <span th:text="${user_email}"></span></h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: header">
+</head>
+
+<head>
+
+  <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
+
+</head>
+
+<title>Home</title>
+
+<body class="container mx-auto bg-gray-50">
+  <div class="bg-gray-50 grid grid-rows-5 grid-flow-col gap-4 h-screen">
+
+    <div class="p-2 row-span-4">
+      <h1>Logged in welcome <span th:text="${user_email}"></span></h1>
+    </div>
 
 
-<a th:href="@{/logout}">Logout</a>
+    <nav th:replace="fragments/nav :: nav">
+    </nav>
+
+  </div>
+
+
+  <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+
+</body>
+
+</html>
