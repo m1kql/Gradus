@@ -12,12 +12,223 @@
 
 <title>Home</title>
 
-<body class="container mx-auto bg-gray-50">
-  <div class="bg-gray-50 grid grid-rows-5 grid-flow-col gap-4 h-screen">
+<body class="container mx-auto">
+  <div class="flex flex-col h-screen">
 
-    <div class="p-2 row-span-4">
-      <h1>Logged in welcome <span th:text="${user_email}"></span></h1>
+    <div class="p-5">
+      <code class="text-lg" th:text="${current_date}"></code>
+      <h1 class="text-blue-700 text-4xl font-bold">
+        Welcome, <span th:text="${user_fName}"></span>.
+      </h1>
     </div>
+    <div class="flex-grow">
+      <div class="p-5 flex lg:flex-row md:flex-col sm:flex-col justify-evenly">
+
+        <div class="p-3">
+          <div
+            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Assignment name</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium ipsam eligendi dolorem perferendis
+              explicabo aspernatur repudiandae dolorum doloribus, distinctio quas!
+            </p>
+            <div class="flex justify-between mb-1">
+              <span class="text-base font-medium text-blue-700 dark:text-white">Progress</span>
+              <span class="text-sm font-medium text-blue-700 dark:text-white">25%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+            </div>
+            <br>
+            <a class="py-3">
+              <button type="button"
+                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                Mark as done
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <!--
+          TODO: Delete this and make it dynamic
+        -->
+        <div class="p-3">
+          <div
+            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Assignment name</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium ipsam eligendi dolorem perferendis
+              explicabo aspernatur repudiandae dolorum doloribus, distinctio quas!
+            </p>
+            <div class="flex justify-between mb-1">
+              <span class="text-base font-medium text-blue-700 dark:text-white">Progress</span>
+              <span class="text-sm font-medium text-blue-700 dark:text-white">25%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+            </div>
+            <br>
+            <a class="">
+              <button type="button"
+                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                Mark as done
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <div class="p-3">
+          <div
+            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Assignment name</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum, dolor sit amet consectetur
+              adipisicing elit. Laudantium ipsam eligendi dolorem perferendis explicabo aspernatur repudiandae dolorum
+              doloribus, distinctio quas!</p>
+            <div class="flex justify-between mb-1">
+              <span class="text-base font-medium text-blue-700 dark:text-white">Progress</span>
+              <span class="text-sm font-medium text-blue-700 dark:text-white">25%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+            </div>
+            <br>
+            <a class="">
+              <button type="button"
+                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                Mark as done
+              </button>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+      <div class="border-b-4 border-gray-200"></div>
+      <br>
+
+
+      <h1 class="text-blue-700 text-xl font-bold">
+        What would you like to do?
+      </h1>
+
+      <div class="p-5 flex lg:flex-row md:flex-col sm:flex-col justify-evenly">
+        <!--To do Card-->
+        <div class="p-3">
+          <div
+            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Check your TODO</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Get started with priority tasks and clear your
+              list for today!</p>
+            <a href="#"
+              class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700">
+              Get Started
+              <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!--Report card-->
+        <div class="p-3">
+          <div
+            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Generate a report</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Unsure about where you are right now? Check
+              your marks and generate a detailed report quickly!</p>
+            <a href="#"
+              class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700">
+              Get Started
+              <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!--Notes card-->
+        <div class="p-3">
+          <div
+            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Jot down notes</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Need to quickly remember something? Jot down
+              some notes.
+              <br>
+              Rendered with <i class="fab fa-markdown"></i>.
+              <br>
+              Supports LaTeX.
+            </p>
+            <a href="#"
+              class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700">
+              Get Started
+              <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!--Assignments card-->
+        <div class="p-3">
+          <div
+            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Plan assignments</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Plan your assignments ahead of time and track your progress. Finish it ahead of time using this planner!
+            </p>
+            <a href="#"
+              class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700">
+              Get Started
+              <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <br>
+      <div class="border-b-4 border-gray-200"></div>
+      <br>
+
+      <div class="p-5">
+        <h1 class="text-2xl text-gray-400">Inspirational Quote of the Day</h1>
+        <br>
+        <h1 class="text-4xl text-indigo-600 font-bold" th:text="${quote}"></h1>
+        <h3 class="text-lg text-gray-700 font-bold" th:text="${quote_author}"></h3>
+      </div>
+
+
+
+
+
+    </div>
+
 
 
     <nav th:replace="fragments/nav :: nav">
