@@ -56,7 +56,7 @@ public class AuthController {
         modelAndView.setViewName("public/register");
       } else {
         userService.saveUser(user);
-        modelAndView.addObject("creation_success_message", "Your account was successfully created. Please login");
+        modelAndView.addObject("creation_success_message", "Your account was successfully created.");
         modelAndView.addObject("user", new User());
         modelAndView.setViewName("public/register");
       }

@@ -1,5 +1,11 @@
 package com.ayj.gradus.controllers;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import com.ayj.gradus.model.User;
 import com.ayj.gradus.services.UserService;
 
@@ -20,9 +26,75 @@ public class DashboardController {
   public ModelAndView home(ModelAndView modelAndView) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User user = userService.findUserByUsername(auth.getName());
-    modelAndView.addObject("user_email", user.getUsername());
+
+    String currentDate;
+    String userEmail;
+    String userFirstName;
+    String formattedUserFirstName;
+    String rawLine;
+    String quote;
+    String author;
+    ArrayList<String> quoteObject = new ArrayList<>();
+    int randomLine;
+
+    currentDate = getDate();
+    userEmail = user.getUsername();
+
+    userFirstName = userEmail
+        .split("@")[0]
+            .replaceAll("\\d", "")
+            .split("\\.")[0];
+
+    formattedUserFirstName = userFirstName
+        .substring(0, 1)
+        .toUpperCase() + userFirstName.substring(1);
+
+    quoteObject = getQuotes();
+    randomLine = (int) Math.floor(Math.random() * quoteObject.size());
+
+    rawLine = quoteObject.get(randomLine);
+    quote = rawLine.split("\\|")[0];
+    author = rawLine.split("\\|")[1];
+
+    modelAndView.addObject("quote", quote);
+    modelAndView.addObject("quote_author", author);
+    modelAndView.addObject("user_fName", formattedUserFirstName);
+    modelAndView.addObject("user_email", userEmail);
+    modelAndView.addObject("current_date", currentDate);
     modelAndView.setViewName("pages/home");
+
     return modelAndView;
+  }
+
+  private String getDate() {
+    String formattedDateString;
+
+    formattedDateString = String.valueOf(java.time.LocalDate.now());
+
+    return formattedDateString;
+  }
+
+  private ArrayList<String> getQuotes() {
+
+    BufferedReader bReader = null;
+    ArrayList<String> quoteObject = new ArrayList<>();
+    try {
+      bReader = new BufferedReader(new FileReader("src/main/resources/static/quotes.txt"));
+
+      String currentLine = "";
+
+      while ((currentLine = bReader.readLine()) != null) {
+        currentLine = bReader.readLine();
+        quoteObject.add(currentLine);
+      }
+    } catch (FileNotFoundException fileNotFoundException) {
+      fileNotFoundException.printStackTrace();
+
+    } catch (IOException ioException) {
+      ioException.printStackTrace();
+    }
+
+    return quoteObject;
   }
 
 }
