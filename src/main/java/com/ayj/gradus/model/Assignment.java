@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Assignment {
 
@@ -15,6 +17,7 @@ public class Assignment {
 
   private int progress;
 
+  @DateTimeFormat(pattern = "MM/dd/yyyy")
   private Date dueDate;
 
   private String description;
@@ -27,6 +30,7 @@ public class Assignment {
     super();
     this.author = author;
     this.description = description;
+    this.progress = progress;
     this.dueDate = dueDate;
   }
 

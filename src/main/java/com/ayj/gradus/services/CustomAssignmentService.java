@@ -16,9 +16,14 @@ public class CustomAssignmentService implements AssignmentService {
   @Autowired
   private AssignmentRepository assignmentRepository;
 
+  @Autowired
+  public CustomAssignmentService(AssignmentRepository assignmentRepository) {
+    this.assignmentRepository = assignmentRepository;
+  }
+
   @Override
-  public List<Assignment> getAssignmentsByUser(String username) {
-    return assignmentRepository.findByUsername(username);
+  public List<Assignment> getAssignmentsByUser(String author) {
+    return assignmentRepository.findByAuthor(author);
   }
 
   @Override
@@ -37,7 +42,7 @@ public class CustomAssignmentService implements AssignmentService {
   }
 
   @Override
-  public void deleteAssignmend(long id) {
+  public void deleteAssignment(long id) {
     Optional<Assignment> aOptional = assignmentRepository.findById(id);
     if (aOptional.isPresent()) {
       assignmentRepository.delete(aOptional.get());

@@ -10,14 +10,14 @@ import com.ayj.gradus.model.Assignment;
  * This interface contains methods used in the CRUD operations of the Gradus app
  * 
  * 
- * Create - @see createAssignment()
- * Read - @see getAssignmentById()
- * Update - @see updateAssignment()
- * Delete - @see deleteAssignment()
+ * @see createAssignment()
+ * @see getAssignmentById()
+ * @see updateAssignment()
+ * @see deleteAssignment()
  */
 public interface AssignmentService {
 
-  List<Assignment> getAssignmentsByUser(String username);
+  List<Assignment> getAssignmentsByUser(String author);
 
   Optional<Assignment> getAssignmentById(long id);
 
@@ -36,7 +36,7 @@ public interface AssignmentService {
 
   void updateAssignment(Assignment assignment);
 
-  void deleteAssignmend(long id);
+  void deleteAssignment(long id);
 
   void saveAssignment(Assignment assignment);
 

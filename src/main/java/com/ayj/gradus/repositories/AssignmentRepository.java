@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
 
-  List<Assignment> findByUsername(String username);
+  List<Assignment> findByAuthor(String author);
 
 }
