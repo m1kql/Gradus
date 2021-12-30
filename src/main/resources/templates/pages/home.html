@@ -23,82 +23,26 @@
     </div>
     <div class="flex-grow">
       <div class="p-5 flex lg:flex-row md:flex-col sm:flex-col justify-evenly">
-
-        <div class="p-3">
+        <div class="p-3 flex-grow" th:each="assignment, iter: ${assignments}" th:if="${iter.index} < 3">
           <div
             class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Assignment name</h5>
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                th:text="${assignment.description}">
+              </h5>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium ipsam eligendi dolorem perferendis
-              explicabo aspernatur repudiandae dolorum doloribus, distinctio quas!
-            </p>
             <div class="flex justify-between mb-1">
               <span class="text-base font-medium text-blue-700 dark:text-white">Progress</span>
-              <span class="text-sm font-medium text-blue-700 dark:text-white">25%</span>
+              <span class="text-sm font-medium text-blue-700 dark:text-white"><span
+                  th:text="${assignment.progress}"></span> %</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+              <div class="bg-blue-600 h-2.5 rounded-full" style="width:"
+                th:attrappend="style=${' '+ assignment.progress + '%;'}">
+              </div>
             </div>
             <br>
-            <a class="py-3">
-              <button type="button"
-                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                Mark as done
-              </button>
-            </a>
-          </div>
-        </div>
-
-        <!--
-          TODO: Delete this and make it dynamic
-        -->
-        <div class="p-3">
-          <div
-            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Assignment name</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium ipsam eligendi dolorem perferendis
-              explicabo aspernatur repudiandae dolorum doloribus, distinctio quas!
-            </p>
-            <div class="flex justify-between mb-1">
-              <span class="text-base font-medium text-blue-700 dark:text-white">Progress</span>
-              <span class="text-sm font-medium text-blue-700 dark:text-white">25%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-            </div>
-            <br>
-            <a class="">
-              <button type="button"
-                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                Mark as done
-              </button>
-            </a>
-          </div>
-        </div>
-
-        <div class="p-3">
-          <div
-            class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Assignment name</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum, dolor sit amet consectetur
-              adipisicing elit. Laudantium ipsam eligendi dolorem perferendis explicabo aspernatur repudiandae dolorum
-              doloribus, distinctio quas!</p>
-            <div class="flex justify-between mb-1">
-              <span class="text-base font-medium text-blue-700 dark:text-white">Progress</span>
-              <span class="text-sm font-medium text-blue-700 dark:text-white">25%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-            </div>
-            <br>
-            <a class="">
+            <a class="py-3" th:href="@{/assignments/delete(id=${assignment.id})}">
               <button type="button"
                 class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                 Mark as done
@@ -197,7 +141,7 @@
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               Plan your assignments ahead of time and track your progress. Finish it ahead of time using this planner!
             </p>
-            <a href="#"
+            <a th:href="@{/assignments}"
               class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700">
               Get Started
               <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"

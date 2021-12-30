@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.ayj.gradus.model.User;
+import com.ayj.gradus.services.CustomAssignmentService;
 import com.ayj.gradus.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class DashboardController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private CustomAssignmentService assignmentService;
+
   @GetMapping("/user/home")
   public ModelAndView home(ModelAndView modelAndView) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -34,6 +38,7 @@ public class DashboardController {
     String rawLine;
     String quote;
     String author;
+    String currUserEmail;
     ArrayList<String> quoteObject = new ArrayList<>();
     int randomLine;
 
@@ -56,11 +61,14 @@ public class DashboardController {
     quote = rawLine.split("\\|")[0];
     author = rawLine.split("\\|")[1];
 
+    currUserEmail = getUserEmail(modelAndView);
+
     modelAndView.addObject("quote", quote);
     modelAndView.addObject("quote_author", author);
     modelAndView.addObject("user_fName", formattedUserFirstName);
     modelAndView.addObject("user_email", userEmail);
     modelAndView.addObject("current_date", currentDate);
+    modelAndView.addObject("assignments", assignmentService.getAssignmentsByUser(currUserEmail));
     modelAndView.setViewName("pages/home");
 
     return modelAndView;
@@ -95,6 +103,14 @@ public class DashboardController {
     }
 
     return quoteObject;
+  }
+
+  private String getUserEmail(ModelAndView modelAndView) {
+
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String userEmail = auth.getName();
+
+    return userEmail;
   }
 
 }
