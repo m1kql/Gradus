@@ -41,6 +41,7 @@ public class DashboardController {
     String currUserEmail;
     ArrayList<String> quoteObject = new ArrayList<>();
     int randomLine;
+    boolean hasAssignments = false;
 
     currentDate = getDate();
     userEmail = user.getUsername();
@@ -63,12 +64,20 @@ public class DashboardController {
 
     currUserEmail = getUserEmail(modelAndView);
 
+    try {
+      assignmentService.getAssignmentsByUser(currUserEmail);
+      hasAssignments = true;
+    } catch (Exception exception) {
+      hasAssignments = false;
+    }
+
     modelAndView.addObject("quote", quote);
     modelAndView.addObject("quote_author", author);
     modelAndView.addObject("user_fName", formattedUserFirstName);
     modelAndView.addObject("user_email", userEmail);
     modelAndView.addObject("current_date", currentDate);
-    modelAndView.addObject("assignments", assignmentService.getAssignmentsByUser(currUserEmail));
+    modelAndView.addObject("assignments",
+        hasAssignments ? assignmentService.getAssignmentsByUser(currUserEmail) : null);
     modelAndView.setViewName("pages/home");
 
     return modelAndView;
