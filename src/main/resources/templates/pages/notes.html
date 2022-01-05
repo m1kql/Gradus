@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: header">
+</head>
+
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
+  <!--ShowdownJS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"
+    integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<title>Notes</title>
+
+<body class="container mx-auto">
+  <div class="flex flex-col h-screen">
+
+    <div class="p-5">
+      <code class="text-lg" th:text="${current_date}"></code>
+      <h1 class="text-blue-700 text-4xl font-bold">
+        Your notes
+      </h1>
+      <br>
+      <a th:href="@{/note/write}" onmouseover="mouseOverAddIconEnter()" onmouseleave="mouseOverAddIconExit()">
+        <h1 id="add-text" style="display: none;" class="text-2xl font-bold">
+          <span
+            class="text-transparent bg-clip-text font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            Create
+          </span>
+          <span class="text-pink-500">
+            a new note
+          </span>
+        </h1>
+        <i id="add-icon" class="text-blue-400 fas fa-plus-circle fa-2x"></i>
+      </a>
+    </div>
+
+    <div class="p-5 flex-grow">
+      <div class="grid grid-cols-3 gap-4">
+        <a th:each="note: ${notes}" th:href="@{/note/delete(id=${note.id})}"
+          class="note block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          th:classappend="${note.isImportant} ? col-span-2 : filler-class">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" th:text="${note.noteTitle}">
+          </h5>
+          <p class="font-normal text-gray-700 dark:text-gray-400 markdown-area" th:utext="${note.noteDescription}">
+          </p>
+        </a>
+      </div>
+    </div>
+
+
+
+    <nav th:replace="fragments/nav :: nav">
+    </nav>
+
+  </div>
+
+  <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+
+  <style>
+    .fa-check-circle:hover {
+      color: #4ade80;
+    }
+
+    .fa-edit:hover {
+      color: #38bdf8;
+    }
+
+    .note:hover {
+      text-decoration-line: line-through;
+    }
+  </style>
+
+  <!--ShowdownJS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"
+    integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <script>
+    const mouseOverAddIconEnter = () => {
+      let addText = document.getElementById("add-text");
+      let addIcon = document.getElementById("add-icon");
+      addText.style.display = "block";
+      addIcon.style.display = "none";
+    }
+
+    const mouseOverAddIconExit = () => {
+      let addText = document.getElementById("add-text");
+      let addIcon = document.getElementById("add-icon");
+      addText.style.display = "none";
+      addIcon.style.display = "block";
+    }
+
+    let converter = new showdown.Converter();
+    let markdown_area = document.getElementsByClassName("markdown-area");
+    let text = document.getElementsByClassName("markdown-area").innerText;
+    let html = converter.makeHtml(text);
+    markdown_area.innerHTML = text;
+
+
+  </script>
+
+</body>
+
+</html>
