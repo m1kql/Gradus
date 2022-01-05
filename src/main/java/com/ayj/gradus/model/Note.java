@@ -11,17 +11,22 @@ public class Note {
 
   private String author;
 
-  private String note;
+  private String noteTitle;
+
+  private String noteDescription;
+
+  private boolean isImportant;
 
   public Note() {
     super();
   }
 
-  public Note(Long id, String author, String note) {
+  public Note(String author, String noteTitle, String noteDescription, boolean isImportant) {
     super();
-    this.id = id;
     this.author = author;
-    this.note = note;
+    this.noteTitle = noteTitle;
+    this.noteDescription = noteDescription;
+    this.isImportant = isImportant;
   }
 
   public Long getId() {
@@ -40,12 +45,27 @@ public class Note {
     this.author = author;
   }
 
-  public String getNote() {
-    return this.note;
+  public String getNoteTitle() {
+    return this.noteTitle;
   }
 
-  public void setNote(String note) {
-    this.note = note;
+  public void setNoteTitle(String noteTitle) {
+    this.noteTitle = noteTitle;
   }
 
+  public String getNoteDescription() {
+    return this.noteDescription;
+  }
+
+  public void setNoteDescription(String noteDescription) {
+    this.noteDescription = noteDescription;
+  }
+
+  public boolean getIsImportant() {
+    return this.isImportant;
+  }
+
+  public void setIsImportant(boolean isImportant) {
+    this.isImportant = isImportant;
+  }
 }

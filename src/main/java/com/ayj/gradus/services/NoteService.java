@@ -24,12 +24,12 @@ public interface NoteService {
    * 
    * 
    * 
-   * 
-   * 
    * @param author
+   * @param noteTitle
    * @param note
+   * @param isImportant
    */
-  void createNote(String author, String note);
+  void createNote(String author, String noteTitle, String noteDescription, boolean isImportant);
 
   void deleteNote(long id);
 
