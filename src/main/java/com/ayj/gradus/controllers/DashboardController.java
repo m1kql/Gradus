@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.ayj.gradus.model.User;
 import com.ayj.gradus.services.CustomAssignmentService;
 import com.ayj.gradus.services.UserService;
+import com.ayj.gradus.utils.CommonUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -26,7 +27,10 @@ public class DashboardController {
   @Autowired
   private CustomAssignmentService assignmentService;
 
-  @GetMapping("/user/home")
+  @Autowired
+  private CommonUtils commonUtils;
+
+  @GetMapping("/home")
   public ModelAndView home(ModelAndView modelAndView) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User user = userService.findUserByUsername(auth.getName());
@@ -43,7 +47,7 @@ public class DashboardController {
     int randomLine;
     boolean hasAssignments = false;
 
-    currentDate = getDate();
+    currentDate = commonUtils.getDate();
     userEmail = user.getUsername();
 
     userFirstName = userEmail
@@ -62,7 +66,7 @@ public class DashboardController {
     quote = rawLine.split("\\|")[0];
     author = rawLine.split("\\|")[1];
 
-    currUserEmail = getUserEmail(modelAndView);
+    currUserEmail = commonUtils.getUserEmail(modelAndView);
 
     try {
       assignmentService.getAssignmentsByUser(currUserEmail);
@@ -81,14 +85,6 @@ public class DashboardController {
     modelAndView.setViewName("pages/home");
 
     return modelAndView;
-  }
-
-  private String getDate() {
-    String formattedDateString;
-
-    formattedDateString = String.valueOf(java.time.LocalDate.now());
-
-    return formattedDateString;
   }
 
   private ArrayList<String> getQuotes() {
@@ -112,14 +108,6 @@ public class DashboardController {
     }
 
     return quoteObject;
-  }
-
-  private String getUserEmail(ModelAndView modelAndView) {
-
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    String userEmail = auth.getName();
-
-    return userEmail;
   }
 
 }

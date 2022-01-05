@@ -7,11 +7,10 @@ import javax.validation.Valid;
 
 import com.ayj.gradus.model.Assignment;
 import com.ayj.gradus.services.CustomAssignmentService;
+import com.ayj.gradus.utils.CommonUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -22,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-
 public class AssignmentController {
 
   @Autowired
   private CustomAssignmentService assignmentService;
+
+  @Autowired
+  private CommonUtils commonUtils;
 
   @InitBinder
   public void initBinder(WebDataBinder binder) {
@@ -40,8 +41,8 @@ public class AssignmentController {
     String currUserEmail;
     String date;
 
-    currUserEmail = getUserEmail(modelAndView);
-    date = getDate();
+    currUserEmail = commonUtils.getUserEmail(modelAndView);
+    date = commonUtils.getDate();
 
     modelAndView.addObject("username", currUserEmail);
     modelAndView.addObject("assignment", assignment);
@@ -62,7 +63,7 @@ public class AssignmentController {
     Date dueDate;
     String currUserEmail;
 
-    currUserEmail = getUserEmail(modelAndView);
+    currUserEmail = commonUtils.getUserEmail(modelAndView);
 
     description = assignment.getDescription();
     progress = assignment.getProgress();
@@ -72,8 +73,6 @@ public class AssignmentController {
     assignment.setProgress(progress);
     assignment.setDueDate(dueDate);
     assignment.setAuthor(currUserEmail);
-
-    System.out.println(dueDate);
 
     assignmentService.saveAssignment(assignment);
 
@@ -99,7 +98,7 @@ public class AssignmentController {
 
     String currUserEmail;
     Date dueDate;
-    currUserEmail = getUserEmail(modelAndView);
+    currUserEmail = commonUtils.getUserEmail(modelAndView);
     dueDate = assignment.getDueDate();
 
     assignment.setAuthor(currUserEmail);
@@ -119,22 +118,6 @@ public class AssignmentController {
     modelAndView.setViewName("pages/assignments");
 
     return new ModelAndView("redirect:/assignments");
-  }
-
-  private String getUserEmail(ModelAndView modelAndView) {
-
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    String userEmail = auth.getName();
-
-    return userEmail;
-  }
-
-  private String getDate() {
-    String formattedDateString;
-
-    formattedDateString = String.valueOf(java.time.LocalDate.now());
-
-    return formattedDateString;
   }
 
 }
