@@ -31,26 +31,17 @@
       </div>
     </a>
     <!--Grading + generate report-->
-    <span class="px-3 cursor-pointer transition duration-150 ease-in-out" data-tooltip-target="tooltip-auto-grading">
-      <i class="w-8 fas fa-file-import p-2 bg-gray-200 rounded-full">
-      </i>
-    </span>
-    <div id="tooltip-auto-grading" role="tooltip"
-      class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-      Autograding and report
-      <div class="tooltip-arrow" data-popper-arrow></div>
-    </div>
-    <!--Account-->
-    <span class="px-3 w-10 relative mr-3 cursor-pointer transition duration-150 ease-in-out"
-      data-tooltip-target="tooltip-account">
-      <i class="w-8 fas fa-user p-2 bg-gray-200 rounded-full">
-      </i>
-    </span>
-    <div id="tooltip-account" role="tooltip"
-      class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-      Account
-      <div class="tooltip-arrow" data-popper-arrow></div>
-    </div>
+    <a th:href="@{/autograding/upload}">
+      <span class="px-3 cursor-pointer transition duration-150 ease-in-out" data-tooltip-target="tooltip-auto-grading">
+        <i class="w-8 fas fa-file-import p-2 bg-gray-200 rounded-full">
+        </i>
+      </span>
+      <div id="tooltip-auto-grading" role="tooltip"
+        class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Autograding and report
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    </a>
     <!--Logout-->
     <span class="w-10 relative float-right mr-3 cursor-pointer transition duration-150 ease-in-out">
       <a th:href="@{/logout}">
