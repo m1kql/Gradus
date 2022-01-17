@@ -21,6 +21,20 @@
     </div>
 
     <div class="p-5 flex-grow">
+
+      <div class="py-5">
+
+        <h2 class="text-lg">
+          Upload your prepared Gradus file here to start autograding. Unsure about how to create a Gradus file?
+          <br>
+          <a class="text-transparent bg-blue-500 bg-clip-text font-bold hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+            th:href="@{/docs#preparing-your-gradus-file}">
+            View our docs!
+          </a>
+        </h2>
+
+      </div>
+
       <div th:if="${success_message}" id="alert_message_box"
         class="bg-green-100 border border-green-400 text-green-600 px-4 py-3 rounded relative" role="alert">
         <strong class="font-bold">Success!</strong>

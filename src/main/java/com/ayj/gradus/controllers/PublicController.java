@@ -16,4 +16,12 @@ public class PublicController {
     return modelAndView;
   }
 
+  @GetMapping("/docs")
+  public ModelAndView docs(ModelAndView modelAndView) {
+
+    modelAndView.setViewName("public/docs");
+
+    return modelAndView;
+  }
+
 }
