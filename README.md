@@ -1,5 +1,7 @@
 # Gradus
 
+[![Build](https://github.com/yak-fumblepack/Gradus/actions/workflows/build.yml/badge.svg)](https://github.com/yak-fumblepack/Gradus/actions/workflows/build.yml)
+
 A web application that merges note taking, assignments, and autograding into one platform for all students. 
 
 Built with Spring boot as part of my ICS3U1 culminating.
