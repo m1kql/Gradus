@@ -1,0 +1,104 @@
+{"0": {
+    "doc": "Home",
+    "title": "Gradus Documentation",
+    "content": "Unsure about the various functionalities of Gradus? Get started with our documentation. Get started now View it on GitHub . ",
+    "url": "http://localhost:4000/#gradus-documentation",
+    "relUrl": "/#gradus-documentation"
+  },"1": {
+    "doc": "Home",
+    "title": "Getting Started",
+    "content": "Dependencies . This project uses Maven as the build tool. In the pom.xml file: . &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.thymeleaf.extras&lt;/groupId&gt; &lt;artifactId&gt;thymeleaf-extras-springsecurity5&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;com.h2database&lt;/groupId&gt; &lt;artifactId&gt;h2&lt;/artifactId&gt; &lt;scope&gt;runtime&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.security&lt;/groupId&gt; &lt;artifactId&gt;spring-security-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.commonmark&lt;/groupId&gt; &lt;artifactId&gt;commonmark&lt;/artifactId&gt; &lt;version&gt;0.18.1&lt;/version&gt; &lt;/dependency&gt; . ",
+    "url": "http://localhost:4000/#getting-started",
+    "relUrl": "/#getting-started"
+  },"2": {
+    "doc": "Home",
+    "title": "Running the application",
+    "content": "Simply run the main method, no set up for the database is required. $ mvn spring-boot:run . Note: The database schemas are all lost when the application is terminated because it is in memory only. This is not suitable for a production environment. Then go to localhost:8080 to view the application. ",
+    "url": "http://localhost:4000/#running-the-application",
+    "relUrl": "/#running-the-application"
+  },"3": {
+    "doc": "Home",
+    "title": "License",
+    "content": "This project is licensed under the Apache 2.0 License. Please refer to LICENSE for more details. ",
+    "url": "http://localhost:4000/#license",
+    "relUrl": "/#license"
+  },"4": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"5": {
+    "doc": "About",
+    "title": "About",
+    "content": "Gradus is a simple and easy to use interface designed to maximise your productivity by doing all the heavy lifting. Track your grades automatically, export detailed reports and task lists. Originally, I had planned to make a video game for my ICS3U1 culminating, however that turned out to be a flop (more on that here). So instead, I made a webapp centered around the workflow that I normally use and how I could make it much more efficient. This is still a crude implementation and far from a production ready product, but I think it demonstrates the main ideas behind it well. ",
+    "url": "http://localhost:4000/about/",
+    "relUrl": "/about/"
+  },"6": {
+    "doc": "Assignments",
+    "title": "Assignments",
+    "content": " ",
+    "url": "http://localhost:4000/docs/using-gradus/assignments/",
+    "relUrl": "/docs/using-gradus/assignments/"
+  },"7": {
+    "doc": "Assignments",
+    "title": "Creating and modifying assignments",
+    "content": "On the home page, click on Get Started. Next click on the Add new assignment button and the following form will show up. Enter in your current progress, set your due date and name your assignment. Then save it! . It will show up on the table and you can then click Options to modify the progress. If you want to mark it as done, hover over the checkmark and click it to finish the assignment. ",
+    "url": "http://localhost:4000/docs/using-gradus/assignments/#creating-and-modifying-assignments",
+    "relUrl": "/docs/using-gradus/assignments/#creating-and-modifying-assignments"
+  },"8": {
+    "doc": "Assignments",
+    "title": "Viewing assignments and progress",
+    "content": "On the home page, the most recently added assignments will be displayed in a row of 3. There is a progress bar, and if you are finished, click Mark as done. ",
+    "url": "http://localhost:4000/docs/using-gradus/assignments/#viewing-assignments-and-progress",
+    "relUrl": "/docs/using-gradus/assignments/#viewing-assignments-and-progress"
+  },"9": {
+    "doc": "Autograding",
+    "title": "Autograding with Gradus",
+    "content": " ",
+    "url": "http://localhost:4000/docs/using-gradus/autograding/#autograding-with-gradus",
+    "relUrl": "/docs/using-gradus/autograding/#autograding-with-gradus"
+  },"10": {
+    "doc": "Autograding",
+    "title": "Setting up your Gradus file",
+    "content": "Create a new text file (*.txt) or Gradus file (*.gradus). A sample file set up for autograding would look like this: . # Comments start with a pound sign # # Your subject goes on the left, followed by a '|' character and then the mark # Decimals are accepted. CS|80 Chemistry|94 History|23 English|40 Biology|99 Math|99 . Note: There must not be a trailing newline character \\n. ",
+    "url": "http://localhost:4000/docs/using-gradus/autograding/#setting-up-your-gradus-file",
+    "relUrl": "/docs/using-gradus/autograding/#setting-up-your-gradus-file"
+  },"11": {
+    "doc": "Autograding",
+    "title": "Accessing the generated file",
+    "content": "If you are hosting this yourself, then you can access the generated file, otherwise it will exist on a remote machine. Paste the given file path into your favourite file explorer to access where it is. ",
+    "url": "http://localhost:4000/docs/using-gradus/autograding/#accessing-the-generated-file",
+    "relUrl": "/docs/using-gradus/autograding/#accessing-the-generated-file"
+  },"12": {
+    "doc": "Autograding",
+    "title": "Autograding",
+    "content": " ",
+    "url": "http://localhost:4000/docs/using-gradus/autograding/",
+    "relUrl": "/docs/using-gradus/autograding/"
+  },"13": {
+    "doc": "Using Gradus",
+    "title": "Using Gradus",
+    "content": " ",
+    "url": "http://localhost:4000/docs/using-gradus/index/",
+    "relUrl": "/docs/using-gradus/index/"
+  },"14": {
+    "doc": "Note taking",
+    "title": "Note taking",
+    "content": " ",
+    "url": "http://localhost:4000/docs/using-gradus/notes/",
+    "relUrl": "/docs/using-gradus/notes/"
+  },"15": {
+    "doc": "Note taking",
+    "title": "Creating your note",
+    "content": "Simply click the blue plus sign to create a new note. All notes are rendered with markdown, refer to the markdown kitchen sink. If you would like your note to take up more space, select the checkbox indicating that this note is an important note. ",
+    "url": "http://localhost:4000/docs/using-gradus/notes/#creating-your-note",
+    "relUrl": "/docs/using-gradus/notes/#creating-your-note"
+  },"16": {
+    "doc": "Note taking",
+    "title": "Deleting your note",
+    "content": "Hover over the note and click the note to delete it. ",
+    "url": "http://localhost:4000/docs/using-gradus/notes/#deleting-your-note",
+    "relUrl": "/docs/using-gradus/notes/#deleting-your-note"
+  }
+}
