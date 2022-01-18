@@ -14,6 +14,8 @@
 
 package com.ayj.gradus;
 
+import com.ayj.gradus.utils.CommonUtils;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -23,6 +25,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class GradusApplication {
+
+	static { // Execute this before the program runs, because we need to create the OS path
+		CommonUtils commonUtils = new CommonUtils();
+		try {
+			commonUtils.createOSPath();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(GradusApplication.class, args);

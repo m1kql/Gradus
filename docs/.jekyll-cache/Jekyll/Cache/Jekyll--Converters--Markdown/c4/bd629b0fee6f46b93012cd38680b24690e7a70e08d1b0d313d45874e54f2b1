@@ -1,0 +1,10 @@
+I"Ð<h1 id="about">About</h1>
+
+<blockquote>
+  <p>Gradus is a simple and easy to use interface designed to maximise your productivity by doing all the heavy lifting. Track your grades automatically, export detailed reports and task lists.</p>
+</blockquote>
+
+<p>Originally, I had planned to make a video game for my ICS3U1 culminating, however that turned out to be a flop (more on that <a href="https://github.com/yak-fumblepack/InHighSchool">here</a>).</p>
+
+<p>So instead, I made a webapp centered around the workflow that I normally use and how I could make it much more efficient. This is still a crude implementation and far from a production ready product, but I think it demonstrates the main ideas behind it well.</p>
+:ET

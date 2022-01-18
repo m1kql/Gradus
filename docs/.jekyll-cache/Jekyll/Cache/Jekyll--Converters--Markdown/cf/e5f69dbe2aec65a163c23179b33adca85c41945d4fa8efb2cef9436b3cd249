@@ -1,0 +1,18 @@
+I"Á<h1 id="note-taking">Note taking</h1>
+
+<h2 id="creating-your-note">Creating your note</h2>
+
+<p>Simply click the blue plus sign to create a new note. All notes are rendered with markdown, refer to the <a href="https://github.com/adamschwartz/github-markdown-kitchen-sink">markdown kitchen sink</a>.</p>
+
+<p><img src="/assets/note1_gradus.png" alt="" /></p>
+
+<p>If you would like your note to take up more space, select the checkbox indicating that this note is an important note.</p>
+
+<p><img src="/assets/note2_gradus.png" alt="" /></p>
+
+<h2 id="deleting-your-note">Deleting your note</h2>
+
+<p>Hover over the note and click the note to delete it.</p>
+
+<p><img src="/assets/note3_gradus.png" alt="" /></p>
+:ET

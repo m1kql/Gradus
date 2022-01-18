@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: header">
+</head>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
+</head>
+
+<title>Create Note</title>
+
+<body class="container mx-auto">
+  <div class="flex flex-col h-screen">
+
+    <div class="p-5">
+      <code class="text-lg" th:text="${current_date}"></code>
+      <h1 class="text-blue-700 text-4xl font-bold">
+        <span><a th:href="@{/notes}"><i
+              class="fas fa-chevron-circle-left bg-indigo-500 bg-clip-text text-transparent hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></i></a></span>
+        Jot down your note
+      </h1>
+    </div>
+
+    <div class="p-5 flex-grow">
+      <div class="py-2">
+        <div class="py-2">
+          <form th:action="@{/note/write}" method="post" th:object="${note}"
+            class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8">
+            <p class="text-blue-700">Title</p>
+            <input type="text"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="noteTitle" autocomplete="off" required />
+
+            <p class="text-blue-700">Note:</p>
+            <textarea name="noteDescription" id="editing-area" cols="30" rows="10"
+              class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+
+
+
+            <div class="flex items-start mb-6">
+              <div class="flex items-center h-5">
+                <input name="isImportant" id="isImportant" type="checkbox"
+                  class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
+              </div>
+              <div class="ml-3 text-sm">
+                <label for="isImportant" class="font-medium text-gray-900 dark:text-gray-300"><strong>Is
+                    this an
+                    important
+                    note?</strong></label>
+              </div>
+            </div>
+
+            <button type="submit"
+              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Create note
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+    <nav th:replace="fragments/nav :: nav">
+    </nav>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+  <script>
+    var simplemde = new SimpleMDE({
+      element: document.getElementById("editing-area"),
+      renderingConfig: {
+        codeSyntaxHighlighting: true,
+      },
+    });
+  </script>
+</body>
+
+</html>

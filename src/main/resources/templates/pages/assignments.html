@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: header">
+</head>
+
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
+</head>
+
+<title>Assignments</title>
+
+<body class="container mx-auto">
+  <div class="flex flex-col h-screen">
+
+    <div class="p-5">
+      <code class="text-lg" th:text="${current_date}"></code>
+      <h1 class="text-blue-700 text-4xl font-bold">
+        All Assignments
+      </h1>
+    </div>
+
+    <div class="p-5 flex-grow">
+      <div class="py-2">
+        <button
+          class="block text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700"
+          type="button" onclick="toggleAssignmentForm()" id="assignment-form-toggle-button">
+          Add new assignment
+        </button>
+
+        <div class="py-2" id="assignment-form" style="display: none;">
+          <form th:action="@{/assignments}" th:object="${assignment}" method="post"
+            class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8">
+            <h3 class="text-xl font-medium text-gray-900 dark:text-white">Add new assignment</h3>
+
+            <p class="text-blue-700">Name or Description:</p>
+            <input type="text" name="description" id="description"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required autocomplete="off" />
+
+            <p class="text-blue-700">Progress:</p>
+            <input type="text"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="progress" id="progress" required autocomplete="off" />
+
+            <p class="text-blue-700">Due Date:</p>
+            <div class="relative">
+              <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <input datepicker datepicker-autohide type="text" name="dueDate" id="dueDate"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Select date" required autocomplete="off" />
+            </div>
+            <button type="submit"
+              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Save assignment
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="py-2 flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden shadow-md sm:rounded-lg">
+              <table class="min-w-full">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr>
+                    <th scope="col"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                      Assignment
+                    </th>
+                    <th scope="col"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                      Progress
+                    </th>
+                    <th scope="col"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                      Due Date
+                    </th>
+                    <th scope="col"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    </th>
+                    <th scope="col"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    </th>
+                  </tr>
+                </thead>
+                <!--Table body-->
+                <tbody>
+                  <tr th:each="assignment: ${assignments}"
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-600">
+                    <td th:text="${assignment.description}"
+                      class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    </td>
+                    <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                      <a th:href="@{/edit-assignment(id=${assignment.id})}">
+                        <span th:text="${assignment.progress}" class="text-sm text-gray-500"></span>
+                      </a>
+                    </td>
+                    <td th:text="${#dates.format(assignment.dueDate, 'dd-MM-yyyy')}"
+                      class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                    </td>
+                    <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                      <button id="dropdownButton" data-dropdown-toggle="dropdown"
+                        class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">Options <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor"
+                          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                          </path>
+                        </svg></button>
+
+                      <!-- Dropdown menu -->
+                      <div id="dropdown"
+                        class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
+                        <ul class="py-1" aria-labelledby="dropdownButton">
+                          <li>
+                            <a th:href="@{/edit-assignment(id=${assignment.id})}"
+                              class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                              Change Progress
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                    <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                      <a th:href="@{/assignments/delete(id=${assignment.id})}"><i
+                          class="fas fa-check-circle fa-2x transition ease-in-out delay-150 hover:-translate-y-1 duration-300"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <nav th:replace="fragments/nav :: nav">
+    </nav>
+
+  </div>
+
+  <script th:src="@{/js/datepicker.js}"></script>
+  <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+  <script>
+    const toggleAssignmentForm = () => {
+      let assignmentForm = document.getElementById("assignment-form");
+      if (assignmentForm.style.display === "none") {
+        let toggleBtn = document.getElementById("assignment-form-toggle-button");
+        toggleBtn.innerText = "Close assignment form";
+        assignmentForm.style.display = "block";
+      } else {
+        let toggleBtn = document.getElementById("assignment-form-toggle-button");
+        toggleBtn.innerText = "Add new assignment";
+        assignmentForm.style.display = "none";
+      }
+    }
+  </script>
+  <style>
+    .fa-check-circle:hover {
+      color: #4ade80;
+    }
+
+    .fa-edit:hover {
+      color: #38bdf8;
+    }
+  </style>
+</body>
+
+</html>

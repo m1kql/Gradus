@@ -1,0 +1,29 @@
+I"z<h1 id="autograding-with-gradus">Autograding with Gradus</h1>
+
+<h2 id="setting-up-your-gradus-file">Setting up your Gradus file</h2>
+
+<p>Create a new text file (<code class="language-plaintext highlighter-rouge">*.txt</code>) or Gradus file (<code class="language-plaintext highlighter-rouge">*.gradus</code>).</p>
+
+<p>A sample file set up for autograding would look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Comments start with a pound sign 
+# 
+# Your subject goes on the left, followed by a '|' character and then the mark
+# Decimals are accepted.
+
+CS|80
+Chemistry|94
+History|23
+English|40
+Biology|99
+Math|99
+</code></pre></div></div>
+
+<p>Note: There must <strong>not</strong> be a trailing newline character <code class="language-plaintext highlighter-rouge">\n</code>.</p>
+
+<h2 id="accessing-the-generated-file">Accessing the generated file</h2>
+
+<p>If you are hosting this yourself, then you can access the generated file, otherwise it will exist on a remote machine.</p>
+
+<p>Paste the given file path into your favourite file explorer to access where it is.</p>
+:ET

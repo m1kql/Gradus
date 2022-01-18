@@ -1,0 +1,53 @@
+<nav th:fragment="nav" class="p-4 row-span-1 col-span-3 object-bottom">
+  <div class="p-2 text-gray-900 bg-gray-50 rounded-lg shadow-lg font-medium capitalize">
+    <a th:href="@{/home}">
+      <span class="px-2 mr-2 border-r border-gray-800">
+        <img th:src="@{/img/gradus-icon.png}" class="w-8 h-8 -mt-1 inline mx-auto">
+      </span>
+    </a>
+    <!--Assignments-->
+    <a th:href="@{/assignments}">
+      <span class="px-4 py-1 cursor-pointer rounded mb-5 transition duration-150 ease-in-out"
+        data-tooltip-target="tooltip-assignments">
+        <i class="w-8 fas fa-th-list p-2 bg-gray-200 rounded-full">
+        </i>
+      </span>
+      <div id="tooltip-assignments" role="tooltip"
+        class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Assignments
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    </a>
+    <!--Notes-->
+    <a th:href="@{/notes}">
+      <span class="px-3 cursor-pointer transition duration-150 ease-in-out" data-tooltip-target="tooltip-notes">
+        <i class="fas fa-sticky-note p-2 bg-gray-200 rounded-full">
+        </i>
+      </span>
+      <div id="tooltip-notes" role="tooltip"
+        class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Notes
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    </a>
+    <!--Grading + generate report-->
+    <a th:href="@{/autograding/upload}">
+      <span class="px-3 cursor-pointer transition duration-150 ease-in-out" data-tooltip-target="tooltip-auto-grading">
+        <i class="w-8 fas fa-file-import p-2 bg-gray-200 rounded-full">
+        </i>
+      </span>
+      <div id="tooltip-auto-grading" role="tooltip"
+        class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Autograding and report
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    </a>
+    <!--Logout-->
+    <span class="w-10 relative float-right mr-3 cursor-pointer transition duration-150 ease-in-out">
+      <a th:href="@{/logout}">
+        <i class="w-8 fas fa-sign-out-alt p-2 bg-gray-200 rounded-full">
+        </i>
+      </a>
+    </span>
+  </div>
+</nav>
