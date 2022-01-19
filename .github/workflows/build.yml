@@ -1,4 +1,4 @@
-name: Build Spring Application with Maven
+name: Build
 
 on:
   push:
@@ -22,4 +22,4 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn -B clean package -DskipTests
+        run: mvn -B clean package -DskipTests -X
