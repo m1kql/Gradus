@@ -18,12 +18,25 @@ public class AuthController {
   @Autowired
   private UserService userService;
 
+  /**
+   * Login GET endpoint
+   * 
+   * @param modelAndView
+   * @return
+   */
   @GetMapping("/login")
   public ModelAndView login(ModelAndView modelAndView) {
     modelAndView.setViewName("public/login");
     return modelAndView;
   }
 
+  /**
+   * Register GET endpoint
+   * 
+   * @param modelAndView
+   * @param user         - user object for form data
+   * @return
+   */
   @GetMapping("/register")
   public ModelAndView registration(ModelAndView modelAndView, User user) {
     modelAndView.addObject("user", user);
