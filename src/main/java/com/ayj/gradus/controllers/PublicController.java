@@ -9,18 +9,16 @@ public class PublicController {
 
   private final String VERSION = "v0.1.0-alpha";
 
+  /**
+   * Index page
+   * 
+   * @param modelAndView
+   * @return
+   */
   @GetMapping("/")
   public ModelAndView index(ModelAndView modelAndView) {
     modelAndView.addObject("version", VERSION);
     modelAndView.setViewName("public/index");
-    return modelAndView;
-  }
-
-  @GetMapping("/docs")
-  public ModelAndView docs(ModelAndView modelAndView) {
-
-    modelAndView.setViewName("public/docs");
-
     return modelAndView;
   }
 

@@ -30,6 +30,12 @@ public class DashboardController {
   @Autowired
   private CommonUtils commonUtils;
 
+  /**
+   * Returns the homepage with assignments and a quote
+   * 
+   * @param modelAndView
+   * @return
+   */
   @GetMapping("/home")
   public ModelAndView home(ModelAndView modelAndView) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -87,6 +93,12 @@ public class DashboardController {
     return modelAndView;
   }
 
+  /**
+   * Obtains the quotes from the txt file and returns an array with the author
+   * followed by the quote
+   * 
+   * @return quoteObject
+   */
   private ArrayList<String> getQuotes() {
 
     BufferedReader bReader = null;

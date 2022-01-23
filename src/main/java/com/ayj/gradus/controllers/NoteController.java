@@ -26,6 +26,12 @@ public class NoteController {
   @Autowired
   private CommonUtils commonUtils;
 
+  /**
+   * Shows the notes page
+   * 
+   * @param modelAndView
+   * @return modelAndView
+   */
   @GetMapping("/notes")
   public ModelAndView notesList(ModelAndView modelAndView) {
 
@@ -44,6 +50,13 @@ public class NoteController {
     return modelAndView;
   }
 
+  /**
+   * Shows the note creation page
+   * 
+   * @param modelAndView
+   * @param note         - note object to be filled with form data
+   * @return modelAndView
+   */
   @GetMapping("/note/write")
   public ModelAndView addNote(ModelAndView modelAndView, Note note) {
 
@@ -54,6 +67,16 @@ public class NoteController {
     return modelAndView;
   }
 
+  /**
+   * Returns the interface for creating a new note, takes all the data entered in
+   * and parses the markdown into html and then persisting it to the database
+   * 
+   * @param modelAndView
+   * @param note          - note object with the filled in attributes
+   * @param bindingResult - if we need to reject something
+   * @return ModelAndView - a new model and view object containing a redirect to a
+   *         new endpoint
+   */
   @PostMapping("/note/write")
   public ModelAndView submitNote(ModelAndView modelAndView, @Valid Note note, BindingResult bindingResult) {
 
@@ -89,6 +112,14 @@ public class NoteController {
     return new ModelAndView("redirect:/notes");
   }
 
+  /**
+   * GET method to delete a note using the id
+   * 
+   * @param id           - passed in the url, specifies what note to delete
+   * @param modelAndView
+   * @return ModelAndView - a new model and view object containing a redirect to a
+   *         new endpoint
+   */
   @GetMapping("/note/delete")
   public ModelAndView deleteNote(@RequestParam long id, ModelAndView modelAndView) {
 
