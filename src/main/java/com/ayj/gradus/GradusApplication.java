@@ -2,13 +2,11 @@
  * Name: Mike Liang
  * Date: December 21 2021
  * Description:
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * This is a web app that allows users to create, read, update and delete assignments 
+ * and notes using the Spring Boot framework. This program also persists this data to
+ * an in memory database (H2). This web app also reads and writes to files by employing
+ * helper methods to find the upload directory in any OS.
+ *
  * @author @yak-fumblepack
  */
 
