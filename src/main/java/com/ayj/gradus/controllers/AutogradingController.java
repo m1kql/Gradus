@@ -36,6 +36,12 @@ public class AutogradingController {
   @Autowired
   private CommonUtils commonUtils;
 
+  /**
+   * A GET method to display the page
+   * 
+   * @param modelAndView - a placeholder for model object and view
+   * @return modelAndView - a model and view
+   */
   @GetMapping("autograding/upload")
   public ModelAndView uploadView(ModelAndView modelAndView) {
 
@@ -45,6 +51,14 @@ public class AutogradingController {
 
   }
 
+  /**
+   * A GET method to accept a file and store it on the local machine
+   * 
+   * @param file         - a multipart file representing the uploaded file
+   * @param modelAndView - a placeholder for model object and view
+   * @return modelAndView - a model and view
+   * @throws Exception
+   */
   @PostMapping("autograding/upload")
   public ModelAndView uploadFile(@RequestParam("autograde_file") MultipartFile file, ModelAndView modelAndView)
       throws Exception {
@@ -94,6 +108,16 @@ public class AutogradingController {
 
   }
 
+  /**
+   * A GET mapping that reads the file and then parses the grades and courses from
+   * it to calculate the average, median and generate an ascii graph. Then it
+   * constructs a string from all of that and writes it to a file and then return
+   * it to the user.
+   * 
+   * @param fileName - the file name in request parameter
+   * @return FileSystemResource - a file
+   * @throws Exception
+   */
   @GetMapping("/autograding/complete/download")
   @ResponseBody
   public FileSystemResource reportView(@RequestParam("ou") String fileName)
@@ -249,6 +273,12 @@ public class AutogradingController {
 
   }
 
+  /**
+   * Calculates the average and returns it
+   * 
+   * @param grades - the grades
+   * @return average
+   */
   private Double calculateAverage(ArrayList<Double> grades) {
 
     double sum;
@@ -266,6 +296,12 @@ public class AutogradingController {
 
   }
 
+  /**
+   * Finds out the median of the array
+   * 
+   * @param grades - the grades
+   * @return median
+   */
   private Double calculateMedian(ArrayList<Double> grades) {
 
     double median;
@@ -280,6 +316,13 @@ public class AutogradingController {
 
   }
 
+  /**
+   * Finds the best course (i.e course with the highest grades)
+   * 
+   * @param courses - courses
+   * @param grades  - grades
+   * @return bestCourse
+   */
   private String[] findBestCourse(ArrayList<String> courses, ArrayList<Double> grades) {
 
     Set<Double> tempKeySet;
@@ -301,6 +344,13 @@ public class AutogradingController {
 
   }
 
+  /**
+   * Draws the graph in ascii characters
+   * 
+   * @param courses
+   * @param grades
+   * @return graph
+   */
   private String drawGraph(ArrayList<String> courses, ArrayList<Double> grades) {
 
     String graph = "";

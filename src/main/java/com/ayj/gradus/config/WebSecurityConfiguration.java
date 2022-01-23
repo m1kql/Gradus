@@ -12,16 +12,26 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ * Configuration for the endpoints and spring security
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+  /**
+   * Dependency injection when we require these objects
+   */
   @Autowired
   private BCryptPasswordEncoder bCryptPasswordEncoder;
 
   @Autowired
   private CustomUserDetailsService userDetailsService;
 
+  /**
+   * Overrides the default spring security authentication provider method and uses
+   * our custom user details implementation and password encoder
+   */
   @Override
   protected void configure(AuthenticationManagerBuilder authProvider) throws Exception {
     authProvider
@@ -29,6 +39,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .passwordEncoder(bCryptPasswordEncoder);
   }
 
+  /**
+   * Overrides the default configuration method for http security and maps
+   * specific protected and public endpoints
+   */
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
 
@@ -49,6 +63,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .logoutSuccessUrl("/").and().exceptionHandling();
   }
 
+  /**
+   * Overrides default configure method for web security for accessing static
+   * files
+   */
   @Override
   public void configure(WebSecurity webSecurity) throws Exception {
     webSecurity
